@@ -30,14 +30,14 @@
 
 <body>
 
-<h2>개를 touch하새요 (touch)</h2>
+<h2>개를 touch하새요</h2>
 
 <img id="dog" src="dog.jpg">
 
 <div>
-  <div class="box" id="clicks">touch하다: 0</div>
-  <div class="box" id="angry1">개는 분노합니다...: 0</div>
-  <div class="box" id="angry2">개는 분개합니다: 0</div>
+  <div class="box" id="clicks">touch: 0</div>
+  <div class="box" id="angry1">dog will be angry...: 0</div>
+  <div class="box" id="angry2">dog was furious.: 0</div>
 </div>
 
 <audio id="bark1" src="bark1.wav"></audio>
@@ -53,49 +53,41 @@ const dog = document.getElementById("dog");
 
 dog.onclick = () => {
 
-  // 😡 화 상태면 클릭 무시
+  // 😡 화난 상태면 클릭 무시
   if (angry) return;
 
-  // 👆 무조건 클릭 카운트
+  // 👆 클릭 카운트
   clickCount++;
-  document.getElementById("clicks").innerText = "touch하다: " + clickCount;
+  document.getElementById("clicks").innerText = "touch: " + clickCount;
 
-  // 🎲 화 발생 확률
+  // 🎲 화날 확률
   if (Math.random() < 0.28) {
+    angry = true;
 
-    // 💢 화1 (70%)
-    if (Math.random() < 0.66) {
-      angry = true;
+    let r = Math.random();
 
+    // 😠 화1 (70%)
+    if (r < 0.6) {
       dog.src = "dog_angry1.jpg";
-
-      const b1 = document.getElementById("bark1");
-      b1.currentTime = 0;
-      b1.play();
+      document.getElementById("bark1").play();
 
       angry1++;
       document.getElementById("angry1").innerText =
-        "개는 분노합니다...: " + angry1;
+        "dog will be angry...: " + angry1;
 
       setTimeout(() => {
         dog.src = "dog.jpg";
         angry = false;
-      }, 1600);
+      }, 1500);
 
-    }
-
-    // 😡 화2 (30%)
-    else {
-      angry = true;
-
+    // 💢 화2 (30%)
+    } else {
       dog.src = "dog_angry2.jpg";
-      const b2 = document.getElementById("bark2");
-      b2.currentTime = 0;
-      b2.play();
+      document.getElementById("bark2").play();
 
       angry2++;
       document.getElementById("angry2").innerText =
-        "개는 분개합니다: " + angry2;
+        "dog was furious.: " + angry2;
 
       setTimeout(() => {
         dog.src = "dog.jpg";
