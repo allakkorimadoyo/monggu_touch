@@ -45,9 +45,9 @@
 <img id="dog" src="dog.jpg">
 
 <div>
-  <div class="box" id="clicks">touch: 0</div>
-  <div class="box" id="angry1">dog will be angry...: 0</div>
-  <div class="box" id="angry2">dog was furious.: 0</div>
+  <div class="box" id="clicks">touch하다: 0</div>
+  <div class="box" id="angry1">개는 분노합니다: 0</div>
+  <div class="box" id="angry2">개는 분개합니다: 0</div>
 </div>
 
 <audio id="bark1" src="bark1.wav"></audio>
@@ -85,7 +85,7 @@ dog.onclick = () => {
 
       angry1++;
       document.getElementById("angry1").innerText =
-        "dog will be angry...: " + angry1;
+        "개는 분노합니다: " + angry1;
 
       setTimeout(() => {
         dog.src = "dog.jpg";
@@ -101,7 +101,7 @@ dog.onclick = () => {
 
       angry2++;
       document.getElementById("angry2").innerText =
-        "dog was furious.: " + angry2;
+        "개는 분개합니다: " + angry2;
 
       setTimeout(() => {
         dog.src = "dog.jpg";
