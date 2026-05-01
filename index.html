@@ -65,6 +65,7 @@
 
 <audio id="bark1" src="bark1.wav"></audio>
 <audio id="bark2" src="bark2.wav"></audio>
+<audio id="touch" src="touch.wav"></audio>
 
 <script>
 let clickCount = 0;
@@ -73,6 +74,12 @@ let angry2 = 0;
 let angry = false;
 
 const dog = document.getElementById("dog");
+const touch = document.getElementById("touch");
+
+dog.onclick = () => {
+
+  touch.currentTime = 0;
+  touch.play();
 
 dog.onclick = () => {
 
