@@ -15,18 +15,8 @@
     width: 80%;
     max-width: 350px;
     cursor: pointer;
-  }
-  
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  img {
     user-select: none;
     -webkit-user-drag: none;
-  }
-
-  html {
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -46,13 +36,6 @@
 
 <body>
 
-  
-<img src="dog_angry1.jpg" style="display:none;">
-<img src="dog_angry2.jpg" style="display:none;">
-
-<audio src="bark1.wav" style="display:none;"></audio>
-<audio src="bark2.wav" style="display:none;"></audio>
-  
 <h2>개를 touch하새요</h2>
 
 <img id="dog" src="dog.jpg">
@@ -62,9 +45,9 @@
   <div class="box" id="angry1">개는 분노합니다: 0</div>
 </div>
 
-<audio id="bark1" src="bark1.wav"></audio>
-<audio id="bark2" src="bark2.wav"></audio>
-<audio id="touch" src="touch.wav"></audio>
+<audio id="bark1" src="bark1.wav" preload="auto"></audio>
+<audio id="bark2" src="bark2.wav" preload="auto"></audio>
+<audio id="touch" src="touch.wav" preload="auto"></audio>
 
 <script>
 let clickCount = 0;
@@ -76,54 +59,58 @@ const touch = document.getElementById("touch");
 
 dog.onclick = () => {
 
-  // 😡 화난 상태면 클릭 무시
   if (angry) return;
 
-  // 🔊 터치 소리 (한 번만!)
+  // 🔊 터치 소리
   touch.currentTime = 0;
-  touch.play();
+  touch.play().catch(() => {});
 
-  // 👆 클릭 카운트
+  // 👆 클릭 증가
   clickCount++;
   document.getElementById("clicks").innerText = "touch: " + clickCount;
 
-  // 🎲 화날 확률
-if (Math.random() < 0.25) {
+  // 🎲 이벤트 확률
+  if (Math.random() < 0.25) {
 
-  let r = Math.random();
-  angry = true;
+    let r = Math.random();
+    angry = true;
 
-  if (r < 0.9) {
-    dog.src = "dog_angry1.jpg";
+    // 😠 화1 (일반)
+    if (r < 0.9) {
+      dog.src = "dog_angry1.jpg";
 
-    const b1 = document.getElementById("bark1");
-    b1.currentTime = 0;
-    b1.play();
+      const b1 = document.getElementById("bark1");
+      b1.currentTime = 0;
+      b1.play().catch(() => {});
 
-    angry1++;
-    document.getElementById("angry1").innerText =
-      "개는 분노합니다: " + angry1;
+      angry1++;
+      document.getElementById("angry1").innerText =
+        "개는 분노합니다: " + angry1;
 
-    setTimeout(() => {
-      dog.src = "dog.jpg";
-      angry = false;
-    }, 1500);
+      setTimeout(() => {
+        dog.src = "dog.jpg";
+        angry = false;
+      }, 1500);
+    }
 
-  } else {
-    dog.src = "dog_angry2.jpg";
+    // 💀 화2 = 게임오버
+    else {
+      dog.src = "dog_angry2.jpg";
 
-    const b2 = document.getElementById("bark2");
-    b2.currentTime = 0;
-    b2.play();
+      const b2 = document.getElementById("bark2");
+      b2.currentTime = 0;
+      b2.play().catch(() => {});
 
+      angry = true;
 
-
-    // 💥 게임 오버
-    setTimeout(() => {
-      alert("개가 당신을 물어뜯었습니다.");
-      location.reload();
-    }, 300);
+      setTimeout(() => {
+        alert("개가 당신을 물어뜯었습니다.");
+        location.reload();
+      }, 400);
+    }
   }
-}
 };
 </script>
+
+</body>
+</html>
