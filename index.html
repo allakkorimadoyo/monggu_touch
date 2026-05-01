@@ -104,7 +104,8 @@ dog.onclick = () => {
       angry = true;
 
       setTimeout(() => {
-        alert("개가 당신을 물어뜯었습니다.");
+        alert("개가 당신을 물어뜯었습니다.\n" +
+             "당신의 touch: " + clickCount);
         location.reload();
       }, 400);
     }
