@@ -45,7 +45,7 @@
 <img id="dog" src="dog.jpg">
 
 <div>
-  <div class="box" id="clicks">touch하다: 0</div>
+  <div class="box" id="clicks">touch: 0</div>
   <div class="box" id="angry1">개는 분노합니다: 0</div>
   <div class="box" id="angry2">개는 분개합니다: 0</div>
 </div>
@@ -68,7 +68,7 @@ dog.onclick = () => {
 
   // 👆 클릭 카운트
   clickCount++;
-  document.getElementById("clicks").innerText = "touch하다: " + clickCount;
+  document.getElementById("clicks").innerText = "touch: " + clickCount;
 
   // 🎲 화날 확률
   if (Math.random() < 0.28) {
