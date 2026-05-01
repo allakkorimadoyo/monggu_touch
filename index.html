@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>개를 touch하새요</title>
 
 <style>
@@ -12,33 +11,24 @@
   }
 
   img {
-    width: 80%;
-    max-width: 350px;
+    width: 300px;
     cursor: pointer;
   }
 
   .box {
     display: inline-block;
     background: #fff0f5;
-    padding: 12px 16px;
+    padding: 10px;
     margin: 5px;
     border: 2px solid hotpink;
     border-radius: 10px;
     color: hotpink;
     font-weight: bold;
-    font-size: 18px;
   }
 </style>
 </head>
 
 <body>
-
-<!-- 🔥 프리로드 -->
-<img src="dog_angry1.jpg" style="display:none;">
-<img src="dog_angry2.jpg" style="display:none;">
-
-<audio src="bark1.wav" style="display:none;"></audio>
-<audio src="bark2.wav" style="display:none;"></audio>
 
 <h2>개를 touch하새요 (touch)</h2>
 
@@ -46,7 +36,7 @@
 
 <div>
   <div class="box" id="clicks">touch하다: 0</div>
-  <div class="box" id="angry1">개는 분노합니다: 0</div>
+  <div class="box" id="angry1">개는 분노합니다...: 0</div>
   <div class="box" id="angry2">개는 분개합니다: 0</div>
 </div>
 
@@ -63,23 +53,20 @@ const dog = document.getElementById("dog");
 
 dog.onclick = () => {
 
+  // 😡 화 상태면 클릭 무시
   if (angry) return;
 
-  // 👆 클릭 카운트
+  // 👆 무조건 클릭 카운트
   clickCount++;
-  document.getElementById("clicks").innerText =
-    "touch하다: " + clickCount;
+  document.getElementById("clicks").innerText = "touch하다: " + clickCount;
 
-  // 🎲 전체 화 확률
-  let r = Math.random();
+  // 🎲 화 발생 확률
+  if (Math.random() < 0.28) {
 
-  if (r < 0.27) {
+    // 💢 화1 (70%)
+    if (Math.random() < 0.66) {
+      angry = true;
 
-    let type = Math.random();
-    angry = true;
-
-    // 💢 화1 (60%)
-    if (type < 0.6) {
       dog.src = "dog_angry1.jpg";
 
       const b1 = document.getElementById("bark1");
@@ -88,7 +75,7 @@ dog.onclick = () => {
 
       angry1++;
       document.getElementById("angry1").innerText =
-        "개는 분노합니다: " + angry1;
+        "개는 분노합니다...: " + angry1;
 
       setTimeout(() => {
         dog.src = "dog.jpg";
@@ -97,10 +84,11 @@ dog.onclick = () => {
 
     }
 
-    // 😡 화2 (40%)
+    // 😡 화2 (30%)
     else {
-      dog.src = "dog_angry2.jpg";
+      angry = true;
 
+      dog.src = "dog_angry2.jpg";
       const b2 = document.getElementById("bark2");
       b2.currentTime = 0;
       b2.play();
