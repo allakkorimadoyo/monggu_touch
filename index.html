@@ -78,10 +78,9 @@ const touch = document.getElementById("touch");
 
 dog.onclick = () => {
 
+  // 🔊 터치 소리 (맨 위!)
   touch.currentTime = 0;
   touch.play();
-
-dog.onclick = () => {
 
   // 😡 화난 상태면 클릭 무시
   if (angry) return;
@@ -92,13 +91,14 @@ dog.onclick = () => {
 
   // 🎲 화날 확률
   if (Math.random() < 0.28) {
-    angry = true;
 
     let r = Math.random();
+    angry = true;
 
-    // 😠 화1 (70%)
+    // 😠 화1 (60%)
     if (r < 0.6) {
       dog.src = "dog_angry1.jpg";
+
       const b1 = document.getElementById("bark1");
       b1.currentTime = 0;
       b1.play();
@@ -112,9 +112,10 @@ dog.onclick = () => {
         angry = false;
       }, 1500);
 
-    // 💢 화2 (30%)
+    // 💢 화2 (40%)
     } else {
       dog.src = "dog_angry2.jpg";
+
       const b2 = document.getElementById("bark2");
       b2.currentTime = 0;
       b2.play();
