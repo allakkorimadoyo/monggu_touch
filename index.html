@@ -60,7 +60,6 @@
 <div>
   <div class="box" id="clicks">touch: 0</div>
   <div class="box" id="angry1">개는 분노합니다: 0</div>
-  <div class="box" id="angry2">개는 분개합니다: 0</div>
 </div>
 
 <audio id="bark1" src="bark1.wav"></audio>
@@ -70,7 +69,6 @@
 <script>
 let clickCount = 0;
 let angry1 = 0;
-let angry2 = 0;
 let angry = false;
 
 const dog = document.getElementById("dog");
@@ -118,9 +116,7 @@ if (Math.random() < 0.25) {
     b2.currentTime = 0;
     b2.play();
 
-    angry2++;
-    document.getElementById("angry2").innerText =
-      "개는 분개합니다: " + angry2;
+
 
     // 💥 게임 오버
     setTimeout(() => {
