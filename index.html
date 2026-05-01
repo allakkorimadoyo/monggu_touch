@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>개를 touch하새요</title>
 
 <style>
@@ -11,19 +12,21 @@
   }
 
   img {
-    width: 300px;
+    width: 80%;
+    max-width: 350px;
     cursor: pointer;
   }
 
   .box {
     display: inline-block;
     background: #fff0f5;
-    padding: 10px;
+    padding: 12px 16px;
     margin: 5px;
     border: 2px solid hotpink;
     border-radius: 10px;
     color: hotpink;
     font-weight: bold;
+    font-size: 18px;
   }
 </style>
 </head>
@@ -69,7 +72,9 @@ dog.onclick = () => {
     // 😠 화1 (70%)
     if (r < 0.6) {
       dog.src = "dog_angry1.jpg";
-      document.getElementById("bark1").play();
+      const b1 = document.getElementById("bark1");
+      b1.currentTime = 0;
+      b1.play();
 
       angry1++;
       document.getElementById("angry1").innerText =
@@ -83,7 +88,9 @@ dog.onclick = () => {
     // 💢 화2 (30%)
     } else {
       dog.src = "dog_angry2.jpg";
-      document.getElementById("bark2").play();
+      const b2 = document.getElementById("bark2");
+      b2.currentTime = 0;
+      b2.play();
 
       angry2++;
       document.getElementById("angry2").innerText =
