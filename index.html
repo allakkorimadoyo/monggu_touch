@@ -90,46 +90,44 @@ dog.onclick = () => {
   document.getElementById("clicks").innerText = "touch: " + clickCount;
 
   // 🎲 화날 확률
-  if (Math.random() < 0.28) {
+if (Math.random() < 0.28) {
 
-    let r = Math.random();
-    angry = true;
+  let r = Math.random();
+  angry = true;
 
-    if (r < 0.6) {
-      dog.src = "dog_angry1.jpg";
+  if (r < 0.85) {
+    dog.src = "dog_angry1.jpg";
 
-      const b1 = document.getElementById("bark1");
-      b1.currentTime = 0;
-      b1.play();
+    const b1 = document.getElementById("bark1");
+    b1.currentTime = 0;
+    b1.play();
 
-      angry1++;
-      document.getElementById("angry1").innerText =
-        "개는 분노합니다: " + angry1;
+    angry1++;
+    document.getElementById("angry1").innerText =
+      "개는 분노합니다: " + angry1;
 
-      setTimeout(() => {
-        dog.src = "dog.jpg";
-        angry = false;
-      }, 1500);
+    setTimeout(() => {
+      dog.src = "dog.jpg";
+      angry = false;
+    }, 1500);
 
-    } else {
-      dog.src = "dog_angry2.jpg";
+  } else {
+    dog.src = "dog_angry2.jpg";
 
-      const b2 = document.getElementById("bark2");
-      b2.currentTime = 0;
-      b2.play();
+    const b2 = document.getElementById("bark2");
+    b2.currentTime = 0;
+    b2.play();
 
-      angry2++;
-      document.getElementById("angry2").innerText =
-        "개는 분개합니다: " + angry2;
+    angry2++;
+    document.getElementById("angry2").innerText =
+      "개는 분개합니다: " + angry2;
 
-      setTimeout(() => {
-        dog.src = "dog.jpg";
-        angry = false;
-      }, 500);
-    }
+    // 💥 게임 오버
+    setTimeout(() => {
+      alert("당신은 개에게 죽임을 당하다.");
+      location.reload();
+    }, 300);
   }
+}
 };
 </script>
-
-</body>
-</html>
