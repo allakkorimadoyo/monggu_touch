@@ -78,17 +78,12 @@ const touch = document.getElementById("touch");
 
 dog.onclick = () => {
 
-  if (angry) return;
-
-touch.currentTime = 0;
-touch.play();
-
-  // 🔊 터치 소리 (맨 위!)
-  touch.currentTime = 0;
-  touch.play();
-
   // 😡 화난 상태면 클릭 무시
   if (angry) return;
+
+  // 🔊 터치 소리 (한 번만!)
+  touch.currentTime = 0;
+  touch.play();
 
   // 👆 클릭 카운트
   clickCount++;
@@ -100,7 +95,6 @@ touch.play();
     let r = Math.random();
     angry = true;
 
-    // 😠 화1 (60%)
     if (r < 0.6) {
       dog.src = "dog_angry1.jpg";
 
@@ -117,7 +111,6 @@ touch.play();
         angry = false;
       }, 1500);
 
-    // 💢 화2 (40%)
     } else {
       dog.src = "dog_angry2.jpg";
 
