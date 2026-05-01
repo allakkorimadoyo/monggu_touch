@@ -95,7 +95,7 @@ if (Math.random() < 0.28) {
   let r = Math.random();
   angry = true;
 
-  if (r < 0.85) {
+  if (r < 0.9) {
     dog.src = "dog_angry1.jpg";
 
     const b1 = document.getElementById("bark1");
@@ -124,7 +124,7 @@ if (Math.random() < 0.28) {
 
     // 💥 게임 오버
     setTimeout(() => {
-      alert("당신은 개에게 죽임을 당하다.");
+      alert("개가 당신을 물어뜯었습니다.");
       location.reload();
     }, 300);
   }
