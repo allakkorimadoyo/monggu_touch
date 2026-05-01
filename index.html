@@ -11,6 +11,18 @@
     background: #fff;
   }
 
+  .mobile-only {
+    display: block;
+    margin: 20px auto;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-only {
+      display: none;
+    }
+  }
+  </style>
+
   img {
     width: 80%;
     max-width: 350px;
@@ -44,8 +56,8 @@
 
 <img id="dog" src="dog.jpg">
 
-  <button onclick="window.open(location.href, '_blank')">
-브라우저로 열기
+<button class="mobile-only" onclick="window.open(location.href, '_blank')">
+  브라우저로 열기
 </button>
 
 <div>
