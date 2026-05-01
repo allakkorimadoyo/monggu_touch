@@ -78,6 +78,11 @@ const touch = document.getElementById("touch");
 
 dog.onclick = () => {
 
+  if (angry) return;
+
+touch.currentTime = 0;
+touch.play();
+
   // 🔊 터치 소리 (맨 위!)
   touch.currentTime = 0;
   touch.play();
